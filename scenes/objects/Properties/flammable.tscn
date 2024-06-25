@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwipr7thyh0hd"]
+
+[ext_resource type="Script" path="res://scenes/objects/Properties/flammable.gd" id="1_eliku"]
+
+[node name="Flammable" type="Node"]
+script = ExtResource("1_eliku")
