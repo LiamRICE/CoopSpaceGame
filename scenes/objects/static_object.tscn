@@ -1,7 +1,32 @@
-[gd_scene format=3 uid="uid://dhlbnkmfh4ixf"]
+[gd_scene load_steps=6 format=3 uid="uid://dhlbnkmfh4ixf"]
+
+[ext_resource type="Texture2D" uid="uid://cfkbh7wa4b8of" path="res://icon.svg" id="1_0jymr"]
+[ext_resource type="Script" path="res://scenes/objects/static_object.gd" id="1_jdvw2"]
+[ext_resource type="PackedScene" uid="uid://dwipr7thyh0hd" path="res://scenes/objects/Properties/flammable.tscn" id="2_vbrwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3kry"]
+size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcavg"]
+radius = 200.0
 
 [node name="StaticObject" type="Node2D"]
+script = ExtResource("1_jdvw2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0jymr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("RectangleShape2D_k3kry")
+
+[node name="Effect_area" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="AoE" type="CollisionShape2D" parent="Effect_area"]
+shape = SubResource("CircleShape2D_dcavg")
+
+[node name="Flammable" parent="." instance=ExtResource("2_vbrwk")]
+is_burning = true

@@ -4,3 +4,8 @@
 
 [node name="Flammable" type="Node"]
 script = ExtResource("1_eliku")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_spread"]
