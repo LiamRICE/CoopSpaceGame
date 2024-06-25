@@ -23,8 +23,6 @@ func _physics_process(delta):
 	# calculate movment from commands in process
 	if direction != Vector2.ZERO:
 		velocity = direction.normalized() * speed * delta
-		print(direction, "*", speed, "*", delta)
-		print(velocity)
 	else:
 		if direction.x == 0:
 			velocity.x = move_toward(velocity.x, 0, speed)
