@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b615pxdwmg818"]
+
+[ext_resource type="PackedScene" uid="uid://c2psltrwoelgq" path="res://scenes/player/player.tscn" id="1_53uul"]
+[ext_resource type="Texture2D" uid="uid://bmdw4whvm8b0k" path="res://graphics/backgrounds/temp_background.png" id="2_30i81"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="TempBackground" type="Sprite2D" parent="Terrain"]
+texture = ExtResource("2_30i81")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("1_53uul")]
+
+[node name="Camera2D" type="Camera2D" parent="Players/Player"]
+position_smoothing_enabled = true
