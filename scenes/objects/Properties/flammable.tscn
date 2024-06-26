@@ -1,11 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwipr7thyh0hd"]
+[gd_scene load_steps=5 format=3 uid="uid://dwipr7thyh0hd"]
 
 [ext_resource type="Script" path="res://scenes/objects/Properties/flammable.gd" id="1_eliku"]
+[ext_resource type="Shader" path="res://ressources/shaders/FX/fire_effect.gdshader" id="2_iurc2"]
+[ext_resource type="Texture2D" uid="uid://dtq2euj1j8yb2" path="res://graphics/FX/fire_effect.png" id="2_xk6bt"]
 
-[node name="Flammable" type="Node"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gmkx"]
+shader = ExtResource("2_iurc2")
+
+[node name="Flammable" type="Node2D"]
+z_index = 10
 script = ExtResource("1_eliku")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="Effect" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_0gmkx")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_xk6bt")
 
 [connection signal="timeout" from="Timer" to="." method="_spread"]

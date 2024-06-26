@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://degdwaqwvdeow"]
+[gd_scene load_steps=3 format=3 uid="uid://degdwaqwvdeow"]
 
+[ext_resource type="Script" path="res://scenes/testing_script.gd" id="1_3hsn6"]
 [ext_resource type="PackedScene" uid="uid://dhlbnkmfh4ixf" path="res://scenes/objects/static_object.tscn" id="1_fxxfu"]
 
 [node name="TestScene" type="Node2D"]
+script = ExtResource("1_3hsn6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="StaticObject" parent="." instance=ExtResource("1_fxxfu")]
-position = Vector2(89, 91)
+[node name="Box" parent="." instance=ExtResource("1_fxxfu")]
+position = Vector2(147, 150)
+
+[node name="Box2" parent="." instance=ExtResource("1_fxxfu")]
+position = Vector2(474, -34)
+
+[node name="Box3" parent="." instance=ExtResource("1_fxxfu")]
+position = Vector2(-403, -93)

@@ -15,21 +15,23 @@ const FIRE_DMG :float = 5
 
 # Associated nodes
 @onready var timer := $Timer
+@onready var effect := $Effect
 
 # Signals
 signal property_event(property :Properties)
+signal property_event_end(property :Properties)
 
 
 func _ready():
-	if is_burning and is_spreadable:
+	if is_burning:
 		start_fire()
 
 
 # Debug _process function
-func _process(delta):
-	# DEBUG
-	if Input.is_action_just_pressed("ui_accept"):
-		start_fire()
+#func _process(delta):
+	## DEBUG
+	#if Input.is_action_just_pressed("ui_accept"):
+		#start_fire()
 
 
 # Spreads the fire when the timer fires
@@ -38,11 +40,14 @@ func _spread():
 
 
 func start_fire():
-	is_burning = true
-	if is_spreadable:
-		timer.start(SPREADING_SPEED)
+	if not is_burning:
+		is_burning = true
+		effect.visible = true
+		if is_spreadable:
+			timer.start(SPREADING_SPEED)
 
 
 func stop_fire():
 	is_burning = false
+	effect.visible = false
 	timer.stop()
