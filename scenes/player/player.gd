@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 # movment constants
 const WALK: float = 6000.0
 const RUN: float = 24000.0
