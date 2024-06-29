@@ -1,40 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjqnah2l5semq"]
+[gd_scene load_steps=2 format=3 uid="uid://cjqnah2l5semq"]
 
 [ext_resource type="Script" path="res://scenes/ships/components/component.gd" id="1_qccgg"]
-[ext_resource type="PackedScene" uid="uid://cvieflltw4d1q" path="res://scenes/structures/wall.tscn" id="2_hi1pn"]
-[ext_resource type="Texture2D" uid="uid://hkmd53ioqxom" path="res://graphics/backgrounds/metal_floor.png" id="3_1vhd3"]
 
-[node name="Component" type="Area2D"]
+[node name="Component" type="Node2D"]
 script = ExtResource("1_qccgg")
-metadata/_edit_lock_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-build_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="Structure" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
-
-[node name="Floor" type="Sprite2D" parent="Structure"]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_1vhd3")
-metadata/_edit_lock_ = true
-
-[node name="Wall" parent="Structure" instance=ExtResource("2_hi1pn")]
-position = Vector2(0, -100)
-scale = Vector2(16, 1)
-
-[node name="Wall2" parent="Structure" instance=ExtResource("2_hi1pn")]
-position = Vector2(0, 100)
-scale = Vector2(16, 1)
-
-[node name="Wall3" parent="Structure" instance=ExtResource("2_hi1pn")]
-position = Vector2(-100, 0)
-scale = Vector2(1, 16)
-
-[node name="Wall4" parent="Structure" instance=ExtResource("2_hi1pn")]
-position = Vector2(100, 0)
-scale = Vector2(1, 16)
 
 [node name="Systems" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

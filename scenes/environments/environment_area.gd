@@ -4,6 +4,7 @@ class_name EnvironmentArea
 
 var area : Area2D = null
 var bodies : Array[Node2D] = []
+var composition: AtmosphericComposition = AtmosphericComposition.new()
 
 func _ready():
 	# fetch Area2D attached to the environment
@@ -12,6 +13,7 @@ func _ready():
 		if child is Area2D:
 			area = child
 	area.connect("body_entered", add_body)
+	area.connect("body_exited", remove_body)
 	
 func _process(_delta):
 	for body in bodies:
@@ -23,3 +25,10 @@ func add_body(body: Node2D):
 
 func remove_body(body: Node2D):
 	bodies.erase(body)
+
+func mix(foreign_environment: EnvironmentArea):
+	# mix this environment evenly with the foreign environment
+	# mix = add both then divide all by two
+	# then lerp from origin to mix over time dictated by opening ratio
+	# plus apply force towards mixing point for wind
+	pass
