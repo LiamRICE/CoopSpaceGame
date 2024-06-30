@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca40hisfm2nqn"]
+
+[ext_resource type="PackedScene" uid="uid://b615pxdwmg818" path="res://scenes/levels/game_scene.tscn" id="1_81rfg"]
+[ext_resource type="PackedScene" uid="uid://b2wnshxdmd8x2" path="res://scenes/ships/ship.tscn" id="2_1cfgv"]
+
+[node name="SpaceScene" instance=ExtResource("1_81rfg")]
+
+[node name="Ship" parent="Terrain" index="0" instance=ExtResource("2_1cfgv")]
+
+[node name="Player" parent="Players" index="0"]
+position = Vector2(150, 0)

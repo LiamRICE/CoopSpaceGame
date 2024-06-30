@@ -14,16 +14,18 @@ func _ready():
 			area = child
 	area.connect("body_entered", add_body)
 	area.connect("body_exited", remove_body)
-	
-func _process(_delta):
+
+func _physics_process(_delta):
 	for body in bodies:
 		apply_effect(body)
 
 func add_body(body: Node2D):
+	print("Body entered!")
 	if body not in bodies:
 		bodies.append(body)
 
 func remove_body(body: Node2D):
+	print("Body exited!")
 	bodies.erase(body)
 
 func mix(foreign_environment: EnvironmentArea):

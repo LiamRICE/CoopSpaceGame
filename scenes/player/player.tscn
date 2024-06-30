@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://cfkbh7wa4b8of" path="res://icon.svg" id="2_efi2b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7el1b"]
-radius = 65.0308
+radius = 16.0312
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 31
 motion_mode = 1
 script = ExtResource("1_wprm2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_efi2b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

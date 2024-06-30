@@ -28,13 +28,15 @@ position = Vector2(-100, 0)
 scale = Vector2(1, 16)
 
 [node name="Wall4" parent="Structure" index="4" instance=ExtResource("3_y0ibb")]
-position = Vector2(100, 0)
-scale = Vector2(1, 16)
+position = Vector2(100, 25)
+scale = Vector2(1, 12)
 
 [node name="EnvironmentArea" parent="Environment" index="0" instance=ExtResource("2_ad1vf")]
 metadata/_edit_lock_ = true
 
 [node name="EnvArea2D" type="Area2D" parent="Environment/EnvironmentArea" index="0"]
+collision_layer = 16
+collision_mask = 3
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/EnvironmentArea/EnvArea2D" index="0"]
