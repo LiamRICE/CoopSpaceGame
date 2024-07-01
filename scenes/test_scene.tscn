@@ -9,10 +9,4 @@ script = ExtResource("1_3hsn6")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Box" parent="." instance=ExtResource("1_fxxfu")]
-position = Vector2(147, 150)
-
-[node name="Box2" parent="." instance=ExtResource("1_fxxfu")]
-position = Vector2(474, -34)
-
-[node name="Box3" parent="." instance=ExtResource("1_fxxfu")]
-position = Vector2(-403, -93)
+position = Vector2(1, -1)

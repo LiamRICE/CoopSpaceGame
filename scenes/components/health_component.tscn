@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpetx5p6fkpbm"]
+
+[ext_resource type="Script" path="res://scenes/components/health_component.gd" id="1_av2sh"]
+
+[node name="HealthComponent" type="Node" groups=["destructibles"]]
+script = ExtResource("1_av2sh")

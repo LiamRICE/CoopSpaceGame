@@ -3,12 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cfkbh7wa4b8of" path="res://icon.svg" id="1_0jymr"]
 [ext_resource type="Script" path="res://scenes/objects/static_object.gd" id="1_jdvw2"]
 [ext_resource type="PackedScene" uid="uid://dwipr7thyh0hd" path="res://scenes/objects/Properties/flammable.tscn" id="2_vbrwk"]
+[ext_resource type="PackedScene" uid="uid://cpetx5p6fkpbm" path="res://scenes/components/health_component.tscn" id="3_vtco4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k3kry"]
 size = Vector2(128, 128)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dcavg"]
-radius = 400.0
 
 [node name="StaticObject" type="Node2D"]
 script = ExtResource("1_jdvw2")
@@ -21,9 +19,6 @@ texture = ExtResource("1_0jymr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
 shape = SubResource("RectangleShape2D_k3kry")
 
-[node name="Effect_area" type="Area2D" parent="."]
-
-[node name="AoE" type="CollisionShape2D" parent="Effect_area"]
-shape = SubResource("CircleShape2D_dcavg")
+[node name="HealthComponent" parent="." instance=ExtResource("3_vtco4")]
 
 [node name="Flammable" parent="." instance=ExtResource("2_vbrwk")]
