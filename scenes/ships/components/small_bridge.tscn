@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://1ku7bpd3mvib"]
+
+[ext_resource type="PackedScene" uid="uid://cjqnah2l5semq" path="res://scenes/ships/components/component.tscn" id="1_o7fd1"]
+[ext_resource type="PackedScene" uid="uid://c0l3llyx3etnf" path="res://scenes/environments/environment_area.tscn" id="2_ad1vf"]
+[ext_resource type="Texture2D" uid="uid://hkmd53ioqxom" path="res://graphics/backgrounds/metal_floor.png" id="2_yo8to"]
+[ext_resource type="PackedScene" uid="uid://cvieflltw4d1q" path="res://scenes/structures/wall.tscn" id="3_y0ibb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmqag"]
+size = Vector2(198, 200)
+
+[node name="Component" instance=ExtResource("1_o7fd1")]
+
+[node name="Floor" type="Sprite2D" parent="Structure" index="0"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_yo8to")
+metadata/_edit_lock_ = true
+
+[node name="Wall" parent="Structure" index="1" instance=ExtResource("3_y0ibb")]
+position = Vector2(0, -100)
+scale = Vector2(16, 1)
+
+[node name="Wall2" parent="Structure" index="2" instance=ExtResource("3_y0ibb")]
+position = Vector2(0, 100)
+scale = Vector2(16, 1)
+
+[node name="Wall3" parent="Structure" index="3" instance=ExtResource("3_y0ibb")]
+position = Vector2(-100, 0)
+scale = Vector2(1, 16)
+
+[node name="Wall4" parent="Structure" index="4" instance=ExtResource("3_y0ibb")]
+position = Vector2(100, 25)
+scale = Vector2(1, 12)
+
+[node name="EnvironmentArea" parent="Environment" index="0" instance=ExtResource("2_ad1vf")]
+metadata/_edit_lock_ = true
+
+[node name="EnvArea2D" type="Area2D" parent="Environment/EnvironmentArea" index="0"]
+collision_layer = 16
+collision_mask = 3
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/EnvironmentArea/EnvArea2D" index="0"]
+shape = SubResource("RectangleShape2D_qmqag")
+metadata/_edit_lock_ = true

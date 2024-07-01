@@ -56,6 +56,14 @@ sprint={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Players"
+2d_physics/layer_2="NPCs"
+2d_physics/layer_3="Interactibles"
+2d_physics/layer_4="Walls"
+2d_physics/layer_5="Zones"
+
 [physics]
 
 2d/default_gravity=0.0

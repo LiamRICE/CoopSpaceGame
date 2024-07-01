@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0l3llyx3etnf"]
+
+[ext_resource type="PackedScene" uid="uid://c3e7m4a4bu5vx" path="res://scenes/environments/base_environment.tscn" id="1_ahpy5"]
+[ext_resource type="Script" path="res://scenes/environments/environment_area.gd" id="2_4ebtm"]
+
+[node name="EnvironmentArea" instance=ExtResource("1_ahpy5")]
+script = ExtResource("2_4ebtm")

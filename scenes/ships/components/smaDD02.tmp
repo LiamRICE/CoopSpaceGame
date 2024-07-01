@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://hvdsq04esob3"]
+
+[ext_resource type="PackedScene" uid="uid://cjqnah2l5semq" path="res://scenes/ships/components/component.tscn" id="1_o7fd1"]
+[ext_resource type="PackedScene" uid="uid://c0l3llyx3etnf" path="res://scenes/environments/environment_area.tscn" id="2_ad1vf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8b48a"]
+size = Vector2(198, 200)
+
+[node name="SmallBridge" instance=ExtResource("1_o7fd1")]
+
+[node name="EnvironmentArea" parent="Environment" index="0" instance=ExtResource("2_ad1vf")]
+
+[node name="EnvArea2D" type="Area2D" parent="Environment/EnvironmentArea" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/EnvironmentArea/EnvArea2D" index="0"]
+shape = SubResource("RectangleShape2D_8b48a")
