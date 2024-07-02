@@ -2,6 +2,8 @@ extends Node2D
 
 
 @onready var box = $Box
+@onready var animation_player = $AnimationPlayer
+
 const Box = preload("res://scenes/objects/static_object.tscn")
 
 
@@ -17,3 +19,5 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		box.get_node("Flammable").start_fire(true)
+		animation_player.play("move_right")
+		
