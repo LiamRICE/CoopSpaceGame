@@ -4,6 +4,7 @@ class_name BaseEnvironment
 
 const environment_name: String = "Void"
 var pressure: float = 0.0 # pressure in atm
+var temperature: float = 0.0 # temperature in C
 
 
 # generic application function for all environments

@@ -2,9 +2,12 @@ extends BaseEnvironment
 
 class_name EnvironmentArea
 
+const wait_time: int = 30 # in physics tics (60/sec)
+
 var area : Area2D = null
 var bodies : Array[Node2D] = []
 var composition: AtmosphericComposition = AtmosphericComposition.new()
+var check_time: int = 0 # random between 0 and wait_time
 
 func _ready():
 	# fetch Area2D attached to the environment
@@ -15,9 +18,14 @@ func _ready():
 	area.connect("body_entered", add_body)
 	area.connect("body_exited", remove_body)
 
-func _physics_process(_delta):
-	for body in bodies:
-		apply_effect(body)
+func _physics_process(delta):
+	# countdown
+	check_time -= 1
+	if check_time <= 0:
+		check_time = wait_time
+	# run check
+		for body in bodies:
+			apply_effect(body)
 
 func add_body(body: Node2D):
 	print("Body entered!")

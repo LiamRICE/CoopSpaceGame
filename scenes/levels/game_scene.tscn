@@ -4,9 +4,9 @@
 
 [node name="GameScene" type="Node2D"]
 
-[node name="Terrain" type="Node2D" parent="."]
+[node name="Terrain" type="Node" parent="."]
 
-[node name="Players" type="Node2D" parent="."]
+[node name="Players" type="Node" parent="."]
 
 [node name="Player" parent="Players" instance=ExtResource("1_53uul")]
 
