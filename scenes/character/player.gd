@@ -1,15 +1,6 @@
-extends CharacterBody2D
+extends Character
 
 class_name Player
-
-# movment constants
-const WALK: float = 6000.0
-const RUN: float = 24000.0
-
-# movment variables
-var speed: float = WALK
-var direction: Vector2 = Vector2.ZERO
-var sprint: bool = false
 
 func _process(_delta):
 	# get input for directional control

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2psltrwoelgq"]
+
+[ext_resource type="Script" path="res://scenes/character/character.gd" id="1_xjjcn"]
+
+[node name="Character" type="CharacterBody2D"]
+collision_mask = 31
+motion_mode = 1
+script = ExtResource("1_xjjcn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
