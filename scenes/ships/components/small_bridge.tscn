@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://1ku7bpd3mvib"]
+[gd_scene load_steps=7 format=3 uid="uid://1ku7bpd3mvib"]
 
 [ext_resource type="PackedScene" uid="uid://cjqnah2l5semq" path="res://scenes/ships/components/component.tscn" id="1_o7fd1"]
 [ext_resource type="PackedScene" uid="uid://c0l3llyx3etnf" path="res://scenes/environments/environment_area.tscn" id="2_ad1vf"]
 [ext_resource type="Texture2D" uid="uid://hkmd53ioqxom" path="res://graphics/backgrounds/metal_floor.png" id="2_yo8to"]
 [ext_resource type="PackedScene" uid="uid://cvieflltw4d1q" path="res://scenes/structures/wall.tscn" id="3_y0ibb"]
+[ext_resource type="PackedScene" uid="uid://jjo3j2jhh12" path="res://scenes/ships/systems/environmental_control_system.tscn" id="4_c7gjx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmqag"]
 size = Vector2(198, 200)
@@ -30,6 +31,10 @@ scale = Vector2(1, 16)
 [node name="Wall4" parent="Structure" index="4" instance=ExtResource("3_y0ibb")]
 position = Vector2(100, 25)
 scale = Vector2(1, 12)
+
+[node name="EnvironmentalControlSystem" parent="Systems" index="0" node_paths=PackedStringArray("local_environment") instance=ExtResource("4_c7gjx")]
+position = Vector2(49, 44)
+local_environment = NodePath("../../Environment/EnvironmentArea")
 
 [node name="EnvironmentArea" parent="Environment" index="0" instance=ExtResource("2_ad1vf")]
 metadata/_edit_lock_ = true

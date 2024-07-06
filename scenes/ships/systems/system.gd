@@ -2,10 +2,15 @@ extends Node2D
 
 class_name System
 
-var obj_name = "System"
+var obj_name: String = ""
+var size: int = 0
 
 func _ready():
-	pass
+	obj_name = "System"
+	size = 1
 
 func _process(delta):
+	pass
+
+func interact():
 	pass
