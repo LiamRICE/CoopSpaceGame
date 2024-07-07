@@ -17,5 +17,5 @@ func _ready():
 	
 	print(environments)
 
-func _process(delta):
+func _process(_delta):
 	pass

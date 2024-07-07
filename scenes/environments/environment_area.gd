@@ -17,8 +17,10 @@ func _ready():
 			area = child
 			area.connect("body_entered", add_body)
 			area.connect("body_exited", remove_body)
+	# TESTING
+	composition.add_gas(Gasses.Gas.HELIUM, 1.5, 42)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# countdown
 	check_time -= 1
 	if check_time <= 0:
@@ -49,13 +51,6 @@ func mix(foreign_environment: EnvironmentArea):
 	# then lerp from origin to mix over time dictated by opening ratio
 	# plus apply force towards mixing point for wind
 	pass
-
-func add(foreign_environment: AtmosphericComposition):
-	for gas in foreign_environment.composition:
-		composition.add_gas(gas, foreign_environment.composition[gas]["pressure"], foreign_environment.composition[gas]["temperature"])
-
-func diff(atmosphere: AtmosphericComposition) -> AtmosphericComposition:
-	return composition.diff(atmosphere)
 
 func print_atmosphere():
 	composition.print()

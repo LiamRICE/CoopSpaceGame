@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu5wi2nvbk8qr"]
+
+[ext_resource type="PackedScene" uid="uid://dpy8ow5pfbq3q" path="res://scenes/ships/systems/system.tscn" id="1_dkut6"]
+[ext_resource type="Script" path="res://scenes/ships/systems/climate_control_system.gd" id="2_4cbpl"]
+
+[node name="ClimateControlSystem" instance=ExtResource("1_dkut6")]
+script = ExtResource("2_4cbpl")

@@ -15,6 +15,9 @@ var sprint: bool = false
 var is_in_environment_zone:bool = false
 # breathing limits
 var breathing_gas:Gasses.Gas
+var exhaling_gas:Gasses.Gas
+var breathing_temp: float = 36
+var breathing_quantity: float = 0.0001
 var min_pressure:float = 0.12
 var max_pressure:float = 2
 var hold_breath_limit:float = 120
@@ -37,17 +40,20 @@ var hp:float = 100
 func _init():
 	# human
 	breathing_gas = Gasses.Gas.OXYGEN
+	exhaling_gas = Gasses.Gas.CARBON_DIOXIDE
 	poison_gas[Gasses.Gas.CARBON_DIOXIDE] = 0.02
 	poison_gas[Gasses.Gas.HYDROGEN] = 0.05
 
 # generic function for environment survival
-func apply_environment(environment: AtmosphericComposition):
+func apply_environment(environment: AtmosphericComposition) -> Dictionary:
+	var is_breathing = false
 	# get relative pressure and temp of breathing gas
 	var p = environment.get_pressure(breathing_gas)
 	var t = environment.total_temperature
 	var pt = environment.total_pressure
 	# ========== PRESSURE ========== #
 	if p < min_pressure:
+		print("Pressure Low")
 		current_breath -= breath_reduce # can't breathe
 		if current_breath <= 0:
 			suffocating() # suffocating
@@ -59,11 +65,14 @@ func apply_environment(environment: AtmosphericComposition):
 			current_breath = hold_breath_limit
 		# TODO - remove breathable gas and add expulsed poison gas
 	if p > max_pressure:
+		print("Pressure High")
 		hp -= 4 # being crushed
 	# ========== TEMPERATURE ========== #
 	if t < min_temp:
+		print("Freezing")
 		hp -= 0.1 # freezing
 	elif t > max_temp:
+		print("Overheating")
 		hp -= 0.05 # too hot
 	# ========== POISONS ========== #
 	var any_poison: bool = false
@@ -79,6 +88,18 @@ func apply_environment(environment: AtmosphericComposition):
 		current_poison_gain -= current_poison_processing
 	if current_poison_gain > max_poison_gain:
 		suffocating(current_poison_gain/max_poison_gain)
+	# return breathing data
+	if is_breathing:
+		var dict = {}
+		dict[breathing_gas] = {}
+		dict[breathing_gas]["pressure"] = breathing_quantity
+		dict[breathing_gas]["temperature"] = breathing_temp
+		dict[exhaling_gas] = {}
+		dict[exhaling_gas]["pressure"] = breathing_quantity
+		dict[exhaling_gas]["temperature"] = breathing_temp
+		return dict
+	else:
+		return {}
 
 func suffocating(factor:float=1):
 	hp -= 2

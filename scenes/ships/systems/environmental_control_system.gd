@@ -9,15 +9,18 @@ class_name EnvironmentalControlSystem
 var target_atmosphere: AtmosphericComposition = AtmosphericComposition.new()
 var injection_timer: int = 30
 var injection_time: int = randi_range(0, 30)
-var injection_pressure = 0.01
+var base_injection_pressure = 0.001
+var injection_pressure: float
 
 func _ready():
 	obj_name = "Environmental Control System"
+	size = 10
+	injection_pressure = base_injection_pressure * size
 	# TESTING
 	target_atmosphere.add_gas(Gasses.Gas.OXYGEN, 0.2, 5)
 	target_atmosphere.add_gas(Gasses.Gas.NITROGEN, 0.8, 5)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# run system twice per second
 	if local_environment != null:
 		injection_time -= 1
@@ -35,7 +38,7 @@ func run_system():
 		sum += diff.composition[gas]["pressure"]
 	# check if gas is at limit
 	if sum != 0:
-		var y = injection_pressure / sum
+		var y = abs(injection_pressure / sum)
 		# set diff environment to pressure limit
 		for gas in diff.composition:
 			diff.composition[gas]["pressure"] = diff.composition[gas]["pressure"] * y

@@ -26,6 +26,10 @@ func add_gas(gas: Gasses.Gas, pressure: float, temp: float):
 	equalise()
 
 func remove_gas(gas: Gasses.Gas, pressure: float):
+	# check for accidental negative pressure
+	if pressure < 0:
+		pressure = -pressure
+	# remove gas
 	if composition.has(gas):
 		composition[gas]["pressure"] -= pressure
 		if composition[gas]["pressure"] <= 0:
@@ -64,6 +68,7 @@ func add_temperature(temp: float):
 		end_temp = (sum + temp) / divider
 	for entry in composition:
 		composition[entry]["temperature"] = end_temp
+	total_temperature = end_temp
 
 func get_pressure(gas:Gasses.Gas) -> float:
 	if composition.has(gas):
@@ -82,10 +87,12 @@ func diff(atmosphere: AtmosphericComposition) -> AtmosphericComposition:
 	var diff = AtmosphericComposition.new()
 	for gas in composition:
 		if atmosphere.composition.has(gas):
-			diff.add_gas(gas, composition[gas]["pressure"] - atmosphere.composition[gas]["pressure"], 0)
+			diff.add_gas(gas, atmosphere.composition[gas]["pressure"] - composition[gas]["pressure"], atmosphere.composition[gas]["temperature"])
+		else:
+			diff.add_gas(gas, -composition[gas]["pressure"], composition[gas]["temperature"])
 	for gas in atmosphere.composition:
 		if not diff.composition.has(gas):
-			diff.add_gas(gas, -atmosphere.composition[gas]["pressure"], 0)
+			diff.add_gas(gas, atmosphere.composition[gas]["pressure"], atmosphere.composition[gas]["temperature"])
 	return diff
 
 func temp_diff(temp: float) -> float:
