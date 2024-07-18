@@ -36,3 +36,5 @@ stretch_margin_top = 1
 stretch_margin_right = 1
 stretch_margin_bottom = 1
 texture_progress = SubResource("GradientTexture1D_lfa6d")
+
+[node name="DmgTimer" type="Timer" parent="."]

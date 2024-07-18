@@ -20,5 +20,7 @@ texture = ExtResource("1_0jymr")
 shape = SubResource("RectangleShape2D_k3kry")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_vtco4")]
+maxHealth = 10.0
 
-[node name="Flammable" parent="." instance=ExtResource("2_vbrwk")]
+[node name="Flammable" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("2_vbrwk")]
+healthComponent = NodePath("../HealthComponent")

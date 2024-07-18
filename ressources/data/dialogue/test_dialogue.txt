@@ -1,0 +1,33 @@
+This is a test dialog that tests all of the major features of the scripting language and the interpreter
+
+=>start
+~shop
+%s : What can I get you ?
+- Bye !:
+	%s : Nice to meet you ! Bye !
+	RTN
+- Can I see your wares ?:
+	IF is_selling: # This is a comment
+		%s : Sure. What do you want to buy ?
+		- One:
+			%s : Want to buy one ?
+			CHNG sold 1
+		- Two:
+			%s : Want to buy two ?
+			CHNG sold 2
+		- Three:
+			%s : Want to buy three ?
+			CHNG sold 3
+		RTN trade
+	ELIF needs_investement:
+		%s : Sorry, I don't have enough capital for trades. Would you like to invest ?
+		RTN invest
+	ELSE:
+		~exit
+		%s : I'm not open at the moment, come again later.
+		RTN
+	JMP shop
+=>end
+
+
+This is a comment

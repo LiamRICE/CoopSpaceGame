@@ -5,11 +5,15 @@ extends Node
 
 # Properties
 @export var maxHealth :float
-@export var health :float:
+var health :float:
 	set(value):
 		health = clampf(value, 0, maxHealth)
 	get:
 		return roundi(health)
+
+
+func _ready():
+	health = maxHealth
 
 
 # Called when the node enters the scene tree for the first time.
