@@ -12,5 +12,5 @@ func _ready():
 	if $Environment.get_child_count() > 0:
 		ENVIRONMENT = $Environment.get_child(0)
 
-func _process(delta):
+func _process(_delta):
 	pass

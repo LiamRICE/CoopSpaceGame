@@ -4,6 +4,7 @@ class_name Ship
 
 @onready var COMPARTMENTS: Node2D = $Compartments
 
+# Listing all systems in the ship
 var components: Array[Node]
 var environments: Array[Node] = []
 
@@ -16,5 +17,5 @@ func _ready():
 	
 	print(environments)
 
-func _process(delta):
+func _process(_delta):
 	pass

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://jjo3j2jhh12"]
+
+[ext_resource type="PackedScene" uid="uid://dpy8ow5pfbq3q" path="res://scenes/ships/systems/system.tscn" id="1_3xusg"]
+[ext_resource type="Script" path="res://scenes/ships/systems/environmental_control_system.gd" id="2_exfqm"]
+
+[node name="EnvironmentalControlSystem" instance=ExtResource("1_3xusg")]
+script = ExtResource("2_exfqm")
