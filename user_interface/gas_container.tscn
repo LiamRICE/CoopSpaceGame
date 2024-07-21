@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://ior7uvubyedf"]
+
+[ext_resource type="Script" path="res://user_interface/gas_container.gd" id="1_6fbpl"]
+
+[node name="GasContainer" type="MarginContainer"]
+offset_right = 11.0
+offset_bottom = 23.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+script = ExtResource("1_6fbpl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GasNameLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Oxygen"
+
+[node name="GasPressureLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0.2Bar"
+
+[node name="GasTempLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "25°C"

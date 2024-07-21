@@ -2,6 +2,8 @@ extends Character
 
 class_name Player
 
+signal on_health_bar_value_changed(value:int)
+
 func _process(_delta):
 	# get input for directional control
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -23,3 +25,10 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()
+
+func deal_damage(damage:float):
+	hp -= damage
+	on_health_bar_value_changed.emit(hp)
+	if hp <= 0:
+		queue_free()
+

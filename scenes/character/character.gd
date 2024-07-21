@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Character
 
+signal on_local_environment(environment: AtmosphericComposition)
+
 # movment constants
 const WALK: float = 6000.0
 const RUN: float = 24000.0
@@ -46,6 +48,7 @@ func _init():
 
 # generic function for environment survival
 func apply_environment(environment: AtmosphericComposition) -> Dictionary:
+	on_local_environment.emit(environment)
 	var is_breathing = false
 	# get relative pressure and temp of breathing gas
 	var p = environment.get_pressure(breathing_gas)
@@ -66,14 +69,14 @@ func apply_environment(environment: AtmosphericComposition) -> Dictionary:
 		# TODO - remove breathable gas and add expulsed poison gas
 	if p > max_pressure:
 		print("Pressure High")
-		hp -= 4 # being crushed
+		deal_damage(4) # being crushed
 	# ========== TEMPERATURE ========== #
 	if t < min_temp:
 		print("Freezing")
-		hp -= 0.1 # freezing
+		deal_damage(0.1) # freezing
 	elif t > max_temp:
 		print("Overheating")
-		hp -= 0.05 # too hot
+		deal_damage(0.05) # too hot
 	# ========== POISONS ========== #
 	var any_poison: bool = false
 	for gas in poison_gas:
@@ -102,7 +105,12 @@ func apply_environment(environment: AtmosphericComposition) -> Dictionary:
 		return {}
 
 func suffocating(factor:float=1):
-	hp -= 2
+	deal_damage(2)
 
 func set_environment(is_in_environment: bool):
 	is_in_environment_zone = is_in_environment
+
+func deal_damage(damage:float):
+	hp -= damage
+	if hp <= 0:
+		queue_free()

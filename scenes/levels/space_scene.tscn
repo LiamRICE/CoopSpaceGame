@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://02x1bnpett0d"]
+[gd_scene load_steps=6 format=3 uid="uid://02x1bnpett0d"]
 
 [ext_resource type="PackedScene" uid="uid://b615pxdwmg818" path="res://scenes/levels/game_scene.tscn" id="1_81rfg"]
 [ext_resource type="PackedScene" uid="uid://b2wnshxdmd8x2" path="res://scenes/ships/ship.tscn" id="2_1cfgv"]
 [ext_resource type="PackedScene" uid="uid://dddhvjqpkv7jd" path="res://scenes/character/player.tscn" id="3_4hq3h"]
+[ext_resource type="PackedScene" uid="uid://dldrj2xmw2c7y" path="res://user_interface/player_ui.tscn" id="4_drc7x"]
+[ext_resource type="PackedScene" uid="uid://cddbpibo42d1q" path="res://user_interface/atmosphere_ui.tscn" id="5_v5ddl"]
 
 [node name="SpaceScene" instance=ExtResource("1_81rfg")]
 
 [node name="Ship" parent="Terrain" index="0" instance=ExtResource("2_1cfgv")]
 
 [node name="Player" parent="Players" index="0" instance=ExtResource("3_4hq3h")]
+
+[node name="PlayerUI" parent="UI" index="0" instance=ExtResource("4_drc7x")]
+
+[node name="AtmosphereUI" parent="UI" index="1" instance=ExtResource("5_v5ddl")]

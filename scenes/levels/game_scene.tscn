@@ -5,3 +5,7 @@
 [node name="Terrain" type="Node" parent="."]
 
 [node name="Players" type="Node" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0

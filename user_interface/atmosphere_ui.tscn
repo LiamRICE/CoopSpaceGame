@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cddbpibo42d1q"]
+
+[ext_resource type="Script" path="res://user_interface/atmosphere_ui.gd" id="1_12fim"]
+
+[node name="AtmosphereUI" type="CanvasLayer"]
+script = ExtResource("1_12fim")
+
+[node name="LeftMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 114.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="LeftContainer" type="VBoxContainer" parent="LeftMarginContainer"]
+layout_mode = 2
+
+[node name="AtmosphereLabel" type="Label" parent="LeftMarginContainer/LeftContainer"]
+layout_mode = 2
+text = "Atmosphere :"
+
+[node name="GasContainer" type="VBoxContainer" parent="LeftMarginContainer/LeftContainer"]
+layout_mode = 2
