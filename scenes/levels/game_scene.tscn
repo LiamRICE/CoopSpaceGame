@@ -2,6 +2,8 @@
 
 [node name="GameScene" type="Node2D"]
 
+[node name="Environment" type="Node" parent="."]
+
 [node name="Terrain" type="Node" parent="."]
 
 [node name="Players" type="Node" parent="."]
